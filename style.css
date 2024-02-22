@@ -1,3 +1,10 @@
 p {
     text-wrap: pretty; text-align: center
 }
+.container {
+    display: flex;
+    align-items: center; /* Vertically center the items */
+}
+.text {
+    margin-left: 20px; /* Adjust the distance between the image and text */
+}
