@@ -4,8 +4,14 @@ p {
 .container {
     display: flex;
     align-items: center; /* Vertically center the items */
-    justify-content: center; /* Horizontally center the items */
 }
 .text {
     margin-left: 20px; /* Adjust the distance between the image and text */
+}
+.cat_cafe {
+    display: flex;
+    justify-content: center; /* Horizontally center the container */
+    align-items: center; /* Vertically center the container */
+    height: 100vh; /* Ensure the body takes the full viewport height */
+    margin: 0; /* Remove default margin */
 }
