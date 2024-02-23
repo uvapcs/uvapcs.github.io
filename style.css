@@ -17,8 +17,7 @@ p {
 }
 .Title {
     display: flex;
-    align-items: center;
-    margin: 25px;
+    justify-content: center;
     background-color: #70c7fa;
     padding: 10px;
 }
