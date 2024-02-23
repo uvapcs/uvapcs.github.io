@@ -15,13 +15,3 @@ p {
     justify-content: center; /* Horizontally center the container */
     margin: 0; /* Remove default margin */
 }
-.Title {
-    background-color: #70c7fa;
-    padding: 10px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-.Title h1 {
-    margin-bottom: 10px;
-    font-family: Lobster;
-}
