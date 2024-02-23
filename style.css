@@ -5,8 +5,10 @@ p {
     display: flex;
     align-items: center; /* Vertically center the items */
 }
-.text {
+.cat_text {
     margin-left: 20px; /* Adjust the distance between the image and text */
+    background-color: #ffac21;
+    padding: 10px;
 }
 .cat_cafe {
     display: flex;
