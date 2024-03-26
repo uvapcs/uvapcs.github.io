@@ -1,1 +1,116 @@
-
+<html>
+<body>
+    <h1>Exploring the DOM</h1>
+    <script>
+        var i = 10;
+        var coins = 0;
+        var maxcoins = 0;
+        function updateCount() {
+            i = i - 1;
+            countobj = document.getElementById("count");
+            console.log("Updating object: " + i); 
+            if (i > 0) {
+                countobj.innerHTML = i;
+                var luminance = 60 + (i * 4);
+                document.body.style.backgroundColor = 
+             "hsl(0, 100%," + luminance + "%)";
+            } else {
+                countobj.innerHTML = "<b>BOOM!</b>";
+                document.body.style.backgroundColor = 
+             "hsl(0, 100%, 50%)";
+             var button = document.createElement("button");
+                button.innerHTML = "Reset";
+                button.onclick = function() {
+                   i = 10;
+                   coins = 0;
+                   document.body.style.backgroundColor = 
+             "white";
+                   countobj.innerHTML = i;
+                   countcoins.innerHTML = coins;
+                    console.log("Reset button clicked");
+                    button.parentNode.removeChild(button);
+                    document.getElementById("nextButton").style.visibility = "visible";
+                    document.getElementById("diffuseButton").style.visibility = "visible";
+                };
+                document.body.appendChild(button);
+                document.getElementById("nextButton").style.visibility = "hidden";
+                document.getElementById("diffuseButton").style.visibility = "hidden";
+            };
+        };
+        function Diffuse() {
+            let r = Math.random();
+            console.log("Updating Random Number: " + r);
+            if (i > 5) {
+                if (r <= 0.5) {
+                i = 11;
+                updateCount(i);
+            } else {
+                i = i - 2;
+                updateCount(i);
+            };   
+            } else {
+                if (r <= 0.25) {
+                i = 11;
+                updateCount(i);
+                } else {
+                    if (i > 2) {
+                    i = i - 1;
+                    updateCount(i);    
+                    } else {
+                    i = 0;
+                    updateCount(i);
+                    console.log("Points Lost");
+                    coins = 0;
+                    countcoins.innerHTML = "Your Coins Blew UP!" 
+                    }  
+                };
+            } 
+        };
+        function point() {
+            if (i > 0) {
+                if (i > 5) {
+                coins = coins + 1;
+                console.log("Updating coins: " + coins);
+                countcoins.innerHTML = coins;
+                } else {
+                coins = coins + 2;
+                console.log("Updating coins: " + coins);
+                countcoins.innerHTML = coins;    
+                }
+            } else {
+                if (maxcoins > coins) {
+                maxcoins = maxcoins;
+                console.log("Max Coins Remain" + maxcoins);
+                countmax.innerHTML = maxcoins;
+                } else {
+                maxcoins = coins;
+                console.log("Max Coins Updated:" + maxcoins);
+                countmax.innerHTML = maxcoins;
+            }
+            }
+            
+        };
+</script>
+<h2>Count Down: <span id="count">
+    <script> 
+        countobj = document.getElementById("count");
+        countobj.innerHTML = i
+    </script>
+    </span></h2>
+<button id="nextButton" onclick="updateCount(); point()">Next</button>
+<button id="diffuseButton" onclick="Diffuse()">Attempt Diffuse</button>
+<h3>Coin Count: <span id="point">
+    <script>
+        countcoins = document.getElementById("point");
+        countcoins.innerHTML = coins;
+    </script>
+</span></h3>
+<h3>High Score: <span id="maxpoint">
+    <script>
+        countmax = document.getElementById("maxpoint");
+        countmax.innerHTML = maxcoins;
+    </script>
+</span></h3>
+</body>
+<style>
+</html>
