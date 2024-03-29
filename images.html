@@ -1,1 +1,67 @@
+<html>
+<style>
+    body {
+    background-color: rgb(243, 191, 240);
+    }
+</style>
+<body>
+    <h1 align="center">Image Carousel</h1><br>
+        <img id="image" src="" alt="Displayed Image">
+        <button onclick=nextImage()>Next Cat</button>
+    <script>
+      // GitHub repository owner and name
+        const owner = 'uvapcs';
+        const repo = 'uvapcs.github.io';
 
+        // Path to the folder containing images
+        const folderPath = 'Cat Images';
+
+        let imageUrls = [];
+    let currentIndex = 0;
+
+    // Function to fetch image URLs from GitHub folder
+    async function fetchImageUrls() {
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${folderPath}`;
+
+      try {
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Filter out only image files
+        imageUrls = data.filter(item => item.type === 'file' && item.name.match(/\.(jpg|jpeg|png|gif)$/))
+                        .map(item => item.download_url);
+        
+        console.log('Image URLs:', imageUrls); // Log the image URLs to verify
+
+        // Display the first image
+        displayImage(currentIndex);
+      } catch (error) {
+        console.error('Error fetching image URLs:', error);
+      }
+    }
+
+    // Function to display the image at the given index
+    function displayImage(index) {
+      const img = document.getElementById('image');
+      console.log(img); // Check if img is null or not
+  img.src = imageUrls[index];
+}
+
+    // Function to display the next image
+    function nextImage() {
+      currentIndex = currentIndex + 1;
+      displayImage(currentIndex);
+    }
+
+    // Fetch image URLs when the page loads
+    window.onload = fetchImageUrls;
+
+    console.log(currentIndex);
+    </script>
+</body>
+</html>
